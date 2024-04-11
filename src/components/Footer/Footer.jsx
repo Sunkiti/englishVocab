@@ -1,9 +1,11 @@
 import React from 'react';
-import styles from './style.module.scss';
+import styles from './style.module.css';
 
 function Footer() {
     return (
-        <footer className={styles.footer}></footer>
+        <footer className={styles.footer}>
+            it's a footer
+        </footer>
 
     );
 }
