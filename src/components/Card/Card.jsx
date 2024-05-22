@@ -1,37 +1,26 @@
 import React from 'react';
-// import styles from './style.module.css';
+import { useState, useEffect } from "react";
+import styles from './style.module.css';
+import { v4 as uuidv4 } from 'uuid';
 
-// function Card() {
-//     return (
-//         <div className={styles.cardOne}>here comes the card
-//         </div>
-//     );
-// }
-
-// const Card = (props) => {
-//     return (
-//         <li>
-//             <h2>{props.title}</h2>
-//             <p>{props.text}</p>
-//         </li>
-//     )
-// }
-// const Card = ({ title, text }) => {
-//     return (
-//         <li>
-//             <h2>{title}</h2>
-//             <p>{text}</p>
-//         </li>
-//     )
-// }
 const Card = (props) => {
-    const { title, text } = props;
+    const { title, translate, transcription, } = props;
+    const [noTranslation, Translated] = useState(false);
+
+    useEffect(() => {
+        Translated(false);
+    }
+        , [title]);
+    const handleTranslation = () => {
+        Translated(!noTranslation);
+    }
     return (
-        <li>
+        <div>
             <h2>{title}</h2>
-            <p>{text}</p>
-        </li>
+            <p>{transcription}</p>
+            {noTranslation ? <p>{translate}</p> : <button className={styles.button} onClick={handleTranslation}>show translation</button>}
+        </div>
     )
 }
-// export default Card;
+
 export default Card;
