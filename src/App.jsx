@@ -16,27 +16,40 @@ const arr = [
 
 function App() {
   const [index, setIndex] = useState(0);
+  // console.log(index);
+  // console.log(arr.length);
+  // console.log(index + 1);
   const upButtonClickHandler = () => {
-    let i = 0;
-    arr[i];
-    if (i > arr.length) {
-      i = 0
+    if (index == 0) {
+      setIndex(arr.length - 1);
     }
+    else {
+      setIndex(index - 1);
+    }
+
+    console.log(index);
+    // let index = 0;
+    // index = (index + 1) % arr.length;
+
   };
   const downButtonClickHandler = () => {
-    setIndex(index + 1);
+    console.log(arr[0]);
+    if (index == arr.length - 1) {
+      setIndex(0);
+    }
+    else {
+      setIndex(index + 1);
+    }
   };
   return (
     <div className="App">
+      {console.log(arr)}
       <Header />
-      {arr.map((item) => (
-        <Wrapper key={uuidv4()}>
-          <button onClick={upButtonClickHandler}>Up</button>
-          <Card title={arr[index].title} translate={arr[index].translate} transcription={arr[index].transcription} key={uuidv4()} />
-          <button onClick={downButtonClickHandler}>Down</button>
-        </Wrapper>
-      ))}
-
+      <Wrapper key={uuidv4()}>
+        <button onClick={upButtonClickHandler}>Up</button>
+        <Card title={arr[index].title} translate={arr[index].translate} transcription={arr[index].transcription} key={uuidv4()} />
+        <button onClick={downButtonClickHandler}>Down</button>
+      </Wrapper>
       <CardList />
       <Footer />
     </div>
